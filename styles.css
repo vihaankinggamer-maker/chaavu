@@ -11,7 +11,6 @@ body {
     min-height: 100vh;
 }
 
-/* ===== GENERAL STYLES ===== */
 .page {
     display: none;
     min-height: 100vh;
@@ -32,7 +31,6 @@ body {
     to { opacity: 1; }
 }
 
-/* ===== ANIMATED BACKGROUND ===== */
 .animated-bg {
     position: fixed;
     width: 100%;
@@ -41,12 +39,10 @@ body {
     left: 0;
     pointer-events: none;
     z-index: 0;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 192, 203, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 192, 203, 0.1) 0%, transparent 50%);
 }
 
-/* ===== HEARTS & DECORATIONS ===== */
 .floating-hearts {
     position: fixed;
     width: 100%;
@@ -96,7 +92,6 @@ body {
     50% { transform: scale(1.2); }
 }
 
-/* ===== STARS ===== */
 .stars, .stars-bg {
     position: fixed;
     width: 100%;
@@ -117,35 +112,16 @@ body {
     animation: twinkle 3s infinite;
 }
 
-.stars::before {
-    left: 15%;
-    top: 20%;
-}
-
-.stars::after {
-    right: 20%;
-    top: 60%;
-    animation-delay: 1s;
-}
-
-.stars-bg::before {
-    left: 5%;
-    top: 30%;
-    animation-delay: 0.5s;
-}
-
-.stars-bg::after {
-    right: 10%;
-    top: 80%;
-    animation-delay: 1.5s;
-}
+.stars::before { left: 15%; top: 20%; }
+.stars::after { right: 20%; top: 60%; animation-delay: 1s; }
+.stars-bg::before { left: 5%; top: 30%; animation-delay: 0.5s; }
+.stars-bg::after { right: 10%; top: 80%; animation-delay: 1.5s; }
 
 @keyframes twinkle {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
 }
 
-/* ===== PAGE 1 STYLES ===== */
 #page1 {
     background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFE4E1 100%);
     flex-direction: column;
@@ -192,7 +168,6 @@ body {
     }
 }
 
-/* GIFs Container */
 .gifs-container {
     display: flex;
     justify-content: center;
@@ -203,49 +178,32 @@ body {
 
 .gif-wrapper {
     background: white;
-    padding: 15px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(255, 20, 147, 0.2);
+    text-align: center;
 }
 
-.cute-gif {
-    width: 120px;
-    height: 120px;
-    border-radius: 15px;
-    border: 5px solid #ff1493;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    object-fit: cover;
-    background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+.cute-character {
+    font-size: 5rem;
+    animation: bounce 1s ease-in-out infinite;
 }
 
-.spin {
-    animation: spin 4s linear infinite;
+.cute-character.large {
+    font-size: 8rem;
 }
 
-.spin-reverse {
-    animation: spinReverse 4s linear infinite;
-}
-
-.float-up {
-    animation: floatUp 3s ease-in-out infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes spinReverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-}
-
-@keyframes floatUp {
+@keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
 
-/* Question Box */
+.gif-wrapper p {
+    color: #ff1493;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 .question-box {
     background: rgba(255, 255, 255, 0.98);
     padding: 40px;
@@ -273,7 +231,6 @@ body {
     }
 }
 
-/* Buttons */
 .button-container {
     display: flex;
     gap: 20px;
@@ -355,7 +312,6 @@ body {
     }
 }
 
-/* ===== PAGE 2 STYLES ===== */
 #page2 {
     background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFE4E1 100%);
     flex-direction: column;
@@ -373,16 +329,6 @@ body {
     margin-bottom: 40px;
     animation: bounceIn 0.8s ease-out;
     position: relative;
-}
-
-.cute-cat-gif {
-    width: 250px;
-    height: 250px;
-    border-radius: 20px;
-    border: 8px solid #ff1493;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    object-fit: cover;
-    background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
 }
 
 .cat-hearts {
@@ -428,14 +374,12 @@ body {
     color: #c71585;
 }
 
-/* ===== PAGE 3 STYLES ===== */
 #page3 {
     background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFE4E1 100%);
     padding: 20px;
     position: relative;
 }
 
-/* Back Button */
 .back-btn {
     position: fixed;
     top: 20px;
@@ -455,6 +399,25 @@ body {
 .back-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+}
+
+.back-section-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background: #ff1493;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 102;
+    font-size: 0.9rem;
+}
+
+.back-section-btn:hover {
+    transform: scale(1.05);
 }
 
 .page3-content {
@@ -500,7 +463,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -513,7 +476,6 @@ body {
     animation: heartBeat 1s infinite;
 }
 
-/* Navigation Menu */
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -564,7 +526,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Content Sections */
 .content-section {
     position: fixed;
     top: 0;
@@ -582,7 +543,7 @@ body {
 }
 
 .content-section.hidden {
-    display: none;
+    display: none !important;
 }
 
 .section-content {
@@ -596,6 +557,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     animation: popIn 0.3s ease;
     margin: 20px 0;
+    position: relative;
 }
 
 .section-content h2 {
@@ -606,7 +568,6 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* About Section */
 .about-section {
     min-height: auto;
 }
@@ -679,7 +640,6 @@ body {
     }
 }
 
-/* Camera Section */
 .camera-content {
     text-align: center;
 }
@@ -756,7 +716,6 @@ body {
     flex-wrap: wrap;
 }
 
-/* Games Section */
 .games-content {
     text-align: center;
 }
@@ -820,7 +779,8 @@ body {
 .match-game,
 .clicker-board,
 .cross-board,
-.memory-board {
+.memory-board,
+.puzzle-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
@@ -830,7 +790,8 @@ body {
 .match-game > div,
 .clicker-board > div,
 .cross-board > div,
-.memory-board > div {
+.memory-board > div,
+.puzzle-board > div {
     aspect-ratio: 1;
     display: flex;
     justify-content: center;
@@ -848,7 +809,8 @@ body {
 .match-game > div:hover,
 .clicker-board > div:hover,
 .cross-board > div:hover,
-.memory-board > div:hover {
+.memory-board > div:hover,
+.puzzle-board > div:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 15px rgba(255, 20, 147, 0.5);
 }
@@ -856,11 +818,11 @@ body {
 .match-game > div:active,
 .clicker-board > div:active,
 .cross-board > div:active,
-.memory-board > div:active {
+.memory-board > div:active,
+.puzzle-board > div:active {
     transform: scale(0.95);
 }
 
-/* Music Player */
 .music-content {
     text-align: center;
 }
@@ -1065,7 +1027,6 @@ body {
     font-weight: bold;
 }
 
-/* Gallery Section */
 .gallery-content {
     text-align: center;
 }
@@ -1118,7 +1079,6 @@ body {
     font-style: italic;
 }
 
-/* Close Section Button */
 .close-section-btn {
     position: fixed;
     top: 20px;
@@ -1148,7 +1108,6 @@ body {
     color: white;
 }
 
-/* Scrollbar Styling */
 .section-content::-webkit-scrollbar {
     width: 10px;
 }
@@ -1167,7 +1126,6 @@ body {
     background: linear-gradient(135deg, #ff1493, #c71585);
 }
 
-/* Floating Hearts Abundant */
 .floating-hearts-abundant {
     position: fixed;
     width: 100%;
@@ -1188,7 +1146,7 @@ body {
 
 .floating-hearts-abundant::before {
     left: 20%;
-    top: -20px;
+        top: -20px;
     animation-delay: 0s;
 }
 
@@ -1209,7 +1167,6 @@ body {
     }
 }
 
-/* Escape Message Animation */
 .escape-message {
     animation: messageFloat 2s ease-out forwards !important;
 }
@@ -1229,7 +1186,6 @@ body {
     }
 }
 
-/* NO button styling for page 1 */
 #noBtn1 {
     transition: all 0.3s ease-out !important;
     cursor: not-allowed !important;
@@ -1241,15 +1197,13 @@ body {
     cursor: not-allowed !important;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .cute-title h1 {
         font-size: 2.5rem;
     }
 
-    .cute-gif {
-        width: 80px;
-        height: 80px;
+    .cute-character {
+        font-size: 3rem;
     }
 
     .question-box {
@@ -1276,7 +1230,8 @@ body {
     .match-game,
     .clicker-board,
     .cross-board,
-    .memory-board {
+    .memory-board,
+    .puzzle-board {
         grid-template-columns: repeat(3, 1fr);
     }
 
@@ -1288,6 +1243,18 @@ body {
         width: 120px;
         height: 120px;
     }
+
+    .music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .play-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1295,9 +1262,8 @@ body {
         font-size: 1.8rem;
     }
 
-    .cute-gif {
-        width: 60px;
-        height: 60px;
+    .cute-character {
+        font-size: 2rem;
     }
 
     .question-box h2 {
@@ -1311,6 +1277,7 @@ body {
 
     .section-content {
         max-height: 95vh;
+        width: 98%;
     }
 
     .gallery-grid {
@@ -1321,15 +1288,8 @@ body {
         gap: 10px;
     }
 
-    .music-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-
-    .play-btn {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
+    .back-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
     }
 }
