@@ -644,28 +644,16 @@ body {
     text-align: center;
 }
 
-.camera-content p {
-    font-size: 1.3rem;
-    color: #c71585;
-    margin: 20px 0;
-}
-
-.photo-booth {
-    margin-top: 30px;
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-}
-
-.photo-booth.hidden {
-    display: none;
-}
-
-.booth-container {
+/* Camera Section Improvements */
+.camera-wrapper {
     position: relative;
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .camera-video {
@@ -674,6 +662,9 @@ body {
     border-radius: 15px;
     border: 3px solid #ff1493;
     object-fit: cover;
+    display: block;
+    background: #000;
+    transform: scaleX(-1);
 }
 
 .photo-canvas {
@@ -681,10 +672,26 @@ body {
     height: 400px;
     border-radius: 15px;
     border: 3px solid #ff1493;
+    display: block;
+    background: #fff;
+    transform: scaleX(-1);
 }
 
 .photo-canvas.hidden {
     display: none;
+}
+
+.camera-status {
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+    background: rgba(76, 175, 80, 0.2);
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    color: #2e7d32;
+    font-weight: bold;
+    display: none;
+    animation: slideDown 0.3s ease;
 }
 
 .booth-overlay {
@@ -700,6 +707,7 @@ body {
     position: absolute;
     font-size: 3rem;
     animation: float 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .sticker-1 { top: 10%; left: 10%; animation-delay: 0s; }
@@ -714,10 +722,6 @@ body {
     margin-top: 20px;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.games-content {
-    text-align: center;
 }
 
 .game-card {
