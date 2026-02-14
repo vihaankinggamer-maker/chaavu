@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Be My Valentine, Chaavu? 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Page 1: Initial Question -->
+    <div id="page1" class="page active">
+        <div class="stars"></div>
+        <div class="floating-hearts"></div>
+        <div class="animated-bg"></div>
+        
+        <div class="page1-content">
+            <div class="cute-title">
+                <h1>✨ Hey Chaavu! ✨</h1>
+                <p class="subtitle">I have something special to ask you...</p>
+            </div>
+
+            <!-- Animated Characters Container -->
+            <div class="gifs-container">
+                <div class="gif-wrapper">
+                    <div class="cute-character">🐱</div>
+                    <p>So Cute</p>
+                </div>
+                <div class="gif-wrapper">
+                    <div class="cute-character">💕</div>
+                    <p>So Sweet</p>
+                </div>
+                <div class="gif-wrapper">
+                    <div class="cute-character">😊</div>
+                    <p>So Lovely</p>
+                </div>
+            </div>
+
+            <!-- Main Question -->
+            <div class="question-box">
+                <h2>Will You Be My Girlfriend? 💕</h2>
+                <div class="heart-decorations">
+                    <span class="heart">❤️</span>
+                    <span class="heart">💕</span>
+                    <span class="heart">💖</span>
+                    <span class="heart">💗</span>
+                    <span class="heart">💝</span>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-container">
+                <button id="yesBtn1" class="btn btn-yes">
+                    <span class="btn-emoji">💕</span>
+                    <span>YES! 💕</span>
+                    <span class="btn-emoji">💕</span>
+                </button>
+                <button id="noBtn1" class="btn btn-no">
+                    <span>No... 😔</span>
+                </button>
+            </div>
+
+            <div class="cute-message">
+                <p>I promise to make you smile every single day 🥰</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Confirmation with Cat -->
+    <div id="page2" class="page">
+        <div class="floating-hearts"></div>
+        <div class="animated-bg"></div>
+        
+        <div class="page2-content">
+            <!-- Cute Character -->
+            <div class="cat-gif-container">
+                <div class="cute-character large">🐱</div>
+                <div class="cat-hearts">
+                    <span>💕</span><span>💕</span><span>💕</span>
+                </div>
+            </div>
+
+            <!-- Confirmation Question -->
+            <div class="confirmation-box">
+                <h2>Are You SURE? 🐱💕</h2>
+                <p>This kitty believes in us! 😸</p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-container">
+                <button id="yesBtn2" class="btn btn-yes">
+                    <span class="btn-emoji">✨</span>
+                    <span>YES! I'm Sure! 💕</span>
+                    <span class="btn-emoji">✨</span>
+                </button>
+                <button id="noBtn2" class="btn btn-no">
+                    <span>Let me think... 🤔</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Victory & Main Experience -->
+    <div id="page3" class="page">
+        <div class="stars-bg"></div>
+        <div class="floating-hearts-abundant"></div>
+        
+        <!-- Back Button -->
+        <button class="back-btn" onclick="goToPage(1)" title="Go Back">
+            <span>← Back</span>
+        </button>
+        
+        <div class="page3-content">
+            <!-- Collage Background -->
+            <div class="collage-section">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiM0rV0w213DgWK_EEzZ1vXrUuyaP6PPkZILL9F-0WEnmdH-lW23gTszabV4laQPwpnqtialKrOSakqa2gL-MZ-X4MxTOYzSazVs8yLzSwqYoTUlu9P5ebQf3okG6dbYt8lD5qyYHaipfMB1t0q8cF9m903SbM8IN5LQ89Z6EJhjhGtag/s1600/Brown%20&%20Beige%20Aesthetic%20Moodboard%20Photo%20Collage%20Desktop%20Wallpaper.png" alt="Our Collage" class="collage-image">
+                <div class="collage-overlay">
+                    <h1 class="victory-text">You Make Me Happy! 💕</h1>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="nav-menu">
+                <button class="nav-btn" onclick="openSection('about')">💌 About Us</button>
+                <button class="nav-btn" onclick="openSection('camera')">📸 Camera</button>
+                <button class="nav-btn" onclick="openSection('games')">🎮 Games</button>
+                <button class="nav-btn" onclick="openSection('music')">🎵 Music</button>
+                <button class="nav-btn" onclick="openSection('gallery')">🖼️ Gallery</button>
+            </div>
+
+            <!-- About Us Section -->
+            <section id="about" class="content-section hidden">
+                <div class="section-content about-section">
+                    <h2>💕 About Us 💕</h2>
+                    <button class="back-section-btn" onclick="closeAllSections()">← Back</button>
+                    <div class="about-container">
+                        <div class="about-animation">
+                            <div class="rotating-heart">💕</div>
+                        </div>
+                        <div class="about-text">
+                            <p class="about-item">
+                                <span class="emoji-large">☀️</span>
+                                <span>You are my sunshine in the darkness</span>
+                            </p>
+                            <p class="about-item">
+                                <span class="emoji-large">🌙</span>
+                                <span>You are my moonlight when I'm alone</span>
+                            </p>
+                            <p class="about-item">
+                                <span class="emoji-large">✨</span>
+                                <span>You make every moment magical</span>
+                            </p>
+                            <p class="about-item">
+                                <span class="emoji-large">😊</span>
+                                <span>I love your beautiful smile</span>
+                            </p>
+                            <p class="about-item">
+                                <span class="emoji-large">😂</span>
+                                <span>I love your infectious laugh</span>
+                            </p>
+                            <p class="about-item">
+                                <span class="emoji-large">💖</span>
+                                <span>I love absolutely everything about you</span>
+                            </p>
+                            <p class="about-item special">
+                                <span class="emoji-large">👰💍</span>
+                                <span>You are my forever and always</span>
+                            </p>
+                            <p class="about-item special">
+                                <span class="emoji-large">🌹</span>
+                                <span>My love for you is infinite and eternal</span>
+                            </p>
+                            <p class="about-item special">
+                                <span class="emoji-large">🎀</span>
+                                <span>You make my heart skip a beat</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Camera Section -->
+            <section id="camera" class="content-section hidden">
+                <div class="section-content camera-content">
+                    <h2>📸 Do You Want to See the Cutest Baby in the World? 📸</h2>
+                    <button class="back-section-btn" onclick="closeAllSections()">← Back</button>
+                    <p>That's YOU! 🥰</p>
+                    <button class="btn btn-yes" onclick="openPhotoBooth()">
+                        <span class="btn-emoji">📷</span>
+                        <span>YES, SHOW ME! 💕</span>
+                        <span class="btn-emoji">📷</span>
+                    </button>
+                    <button class="btn btn-no" onclick="closeSection()">Maybe Later... 😊</button>
+                    
+                    <!-- Photo Booth -->
+                    <div id="photoBooth" class="photo-booth hidden">
+                        <div class="booth-container">
+                            <video id="cameraVideo" class="camera-video"></video>
+                            <canvas id="photoCanvas" class="photo-canvas hidden"></canvas>
+                            <div class="booth-overlay">
+                                <div class="cute-sticker sticker-1">💕</div>
+                                <div class="cute-sticker sticker-2">✨</div>
+                                <div class="cute-sticker sticker-3">💖</div>
+                                <div class="cute-sticker sticker-4">🌹</div>
+                                <div class="cute-sticker sticker-5">💗</div>
+                            </div>
+                            <div class="booth-controls">
+                                <button class="btn btn-yes" onclick="capturePhoto()">📸 Capture!</button>
+                                <button class="btn btn-no" onclick="downloadPhoto()">💾 Download</button>
+                                <button class="btn btn-no" onclick="closPhotoBooth()">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Games Section -->
+            <section id="games" class="content-section hidden">
+                <div class="section-content games-content">
+                    <h2>🎮 Love Games 🎮</h2>
+                    <button class="back-section-btn" onclick="closeAllSections()">← Back</button>
+                    
+                    <!-- Love Quiz Game -->
+                    <div class="game-card fancy-game">
+                        <div class="game-icon">💕</div>
+                        <h3>Love Quiz</h3>
+                        <p>How well do you know me?</p>
+                        <button class="btn btn-yes" onclick="startLoveQuiz()">Play! 💕</button>
+                        <div id="loveQuizGame" class="game-board hidden">
+                            <div id="quizContent"></div>
+                            <button class="btn btn-no" onclick="closeLoveQuiz()">Quit</button>
+                        </div>
+                    </div>
+
+                    <!-- Heart Matcher -->
+                    <div class="game-card fancy-game">
+                        <div class="game-icon">💖</div>
+                        <h3>Heart Matcher</h3>
+                        <p>Match the pairs of love</p>
+                        <button class="btn btn-yes" onclick="startHeartMatch()">Play! 💕</button>
+                        <div id="heartMatchGame" class="game-board hidden">
+                            <div class="match-game"></div>
+                            <button class="btn btn-no" onclick="closeHeartMatch()">Quit</button>
+                        </div>
+                    </div>
+
+                    <!-- Love Clicker -->
+                    <div class="game-card fancy-game">
+                        <div class="game-icon">❤️</div>
+                        <h3>Love Clicker</h3>
+                        <p>Express your love!</p>
+                        <button class="btn btn-yes" onclick="startHeartClicker()">Play! 💕</button>
+                        <div id="heartClickerGame" class="game-board hidden">
+                            <div class="clicker-board"></div>
+                            <p>Love Level: <span id="clickerScore">0</span> ❤️</p>
+                            <button class="btn btn-no" onclick="closeHeartClicker()">Quit</button>
+                        </div>
+                    </div>
+
+                    <!-- Memory of Us -->
+                    <div class="game-card fancy-game">
+                        <div class="game-icon">🧠</div>
+                        <h3>Memory of Us</h3>
+                        <p>Remember our love</p>
+                        <button class="btn btn-yes" onclick="startMemoryGame()">Play! 💕</button>
+                        <div id="memoryGame" class="game-board hidden">
+                            <div class="memory-board"></div>
+                            <p>Moves: <span id="moves">0</span></p>
+                            <button class="btn btn-no" onclick="closeMemoryGame()">Quit</button>
+                        </div>
+                    </div>
+
+                    <!-- Love Puzzle -->
+                    <div class="game-card fancy-game">
+                        <div class="game-icon">🧩</div>
+                        <h3>Love Puzzle</h3>
+                        <p>Put the hearts together</p>
+                        <button class="btn btn-yes" onclick="startLovePuzzle()">Play! 💕</button>
+                        <div id="lovePuzzleGame" class="game-board hidden">
+                            <div class="puzzle-board"></div>
+                            <button class="btn btn-no" onclick="closeLovePuzzle()">Quit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Music Player Section -->
+            <section id="music" class="content-section hidden">
+                <div class="section-content music-content">
+                    <h2>🎵 Our Love Playlist 🎵</h2>
+                    <button class="back-section-btn" onclick="closeAllSections()">← Back</button>
+                    
+                    <div class="music-player">
+                        <div class="player-display">
+                            <div class="album-art">
+                                <div class="album-image">🎵</div>
+                            </div>
+                            <div class="music-info">
+                                <p id="currentSongTitle" class="song-title">Terenaina</p>
+                                <p id="currentSongArtist" class="song-artist">Our Love Playlist</p>
+                            </div>
+                            <div class="music-animation">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+
+                        <audio id="audioPlayer" crossorigin="anonymous">
+                        </audio>
+
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div id="progress" class="progress"></div>
+                            </div>
+                            <div class="time-display">
+                                <span id="currentTime">0:00</span>
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="player-controls">
+                            <button id="prevBtn" class="music-btn prev-btn" title="Previous">⏮️</button>
+                            <button id="playBtn" class="music-btn play-btn" title="Play/Pause">▶️</button>
+                            <button id="nextBtn" class="music-btn next-btn" title="Next">⏭️</button>
+                        </div>
+
+                        <div class="volume-control">
+                            <span>🔊</span>
+                            <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                        </div>
+
+                        <div class="playlist">
+                            <h4>🎶 All 16 Love Songs 🎶</h4>
+                            <div class="song-list-container">
+                                <div id="songListDisplay" class="song-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="content-section hidden">
+                <div class="section-content gallery-content">
+                    <h2>🖼️ Memory Gallery 🖼️</h2>
+                    <button class="back-section-btn" onclick="closeAllSections()">← Back</button>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">🎀</div>
+                            <p>Our First Moment</p>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">💕</div>
+                            <p>Love & Laughter</p>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">✨</div>
+                            <p>Magical Times</p>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">🌹</div>
+                            <p>Romantic Moments</p>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">💖</div>
+                            <p>Forever Memories</p>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">🎊</div>
+                            <p>Joy & Happiness</p>
+                        </div>
+                    </div>
+
+                    <p class="gallery-note">📸 These moments are waiting to be filled with our memories! 💕</p>
+                </div>
+            </section>
+
+            <!-- Close Button -->
+            <button class="close-section-btn" onclick="closeAllSections()">❌</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

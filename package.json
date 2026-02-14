@@ -1,0 +1,19 @@
+{
+  "name": "valentine-for-chaavu",
+  "version": "1.0.0",
+  "description": "A cute Valentine's website for Chaavu 💕",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server",
+    "dev": "npx http-server -c-1"
+  },
+  "keywords": [
+    "valentine",
+    "cute",
+    "love",
+    "interactive"
+  ],
+  "author": "vihaankinggamer-maker",
+  "license": "MIT",
+  "dependencies": {}
+}
