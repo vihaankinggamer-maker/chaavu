@@ -179,7 +179,7 @@
                 </div>
             </section>
 
-            <!-- Camera Section -->
+                        <!-- Camera Section -->
             <section id="camera" class="content-section hidden">
                 <div class="section-content camera-content">
                     <h2>📸 Do You Want to See the Cutest Baby in the World? 📸</h2>
@@ -195,8 +195,10 @@
                     <!-- Photo Booth -->
                     <div id="photoBooth" class="photo-booth hidden">
                         <div class="booth-container">
-                            <video id="cameraVideo" class="camera-video"></video>
-                            <canvas id="photoCanvas" class="photo-canvas hidden"></canvas>
+                            <div class="camera-wrapper">
+                                <video id="cameraVideo" class="camera-video" playsinline autoplay muted></video>
+                                <canvas id="photoCanvas" class="photo-canvas hidden"></canvas>
+                            </div>
                             <div class="booth-overlay">
                                 <div class="cute-sticker sticker-1">💕</div>
                                 <div class="cute-sticker sticker-2">✨</div>
@@ -204,6 +206,7 @@
                                 <div class="cute-sticker sticker-4">🌹</div>
                                 <div class="cute-sticker sticker-5">💗</div>
                             </div>
+                            <div id="cameraStatus" class="camera-status"></div>
                             <div class="booth-controls">
                                 <button class="btn btn-yes" onclick="capturePhoto()">📸 Capture!</button>
                                 <button class="btn btn-no" onclick="downloadPhoto()">💾 Download</button>
