@@ -297,76 +297,205 @@ function closeAllSections() {
 
 // ===== CAMERA FUNCTIONALITY =====
 let cameraStream = null;
+let isCameraReady = false;
 
 function startCamera() {
     const video = document.getElementById('cameraVideo');
+    const cameraStatus = document.getElementById('cameraStatus');
+    
+    if (!video) {
+        console.log('Video element not found');
+        return;
+    }
+
+    // Check browser support
+    const constraints = {
+        video: {
+            width: { ideal: 1280 },
+            height: { ideal: 720 },
+            facingMode: 'user'
+        },
+        audio: false
+    };
+
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.getUserMedia(constraints)
             .then(function(stream) {
+                console.log('Camera stream obtained');
                 cameraStream = stream;
                 video.srcObject = stream;
+                
+                // Wait for video to load
+                video.onloadedmetadata = function() {
+                    console.log('Video metadata loaded');
+                    video.play()
+                        .then(() => {
+                            console.log('Video playing');
+                            isCameraReady = true;
+                            if (cameraStatus) {
+                                cameraStatus.textContent = '✅ Camera Ready!';
+                                cameraStatus.style.display = 'block';
+                                setTimeout(() => {
+                                    cameraStatus.style.display = 'none';
+                                }, 2000);
+                            }
+                        })
+                        .catch(err => {
+                            console.log('Play error:', err);
+                            if (cameraStatus) {
+                                cameraStatus.textContent = '⚠️ Click to enable camera';
+                                cameraStatus.style.display = 'block';
+                            }
+                        });
+                };
             })
             .catch(function(err) {
-                console.log("Camera access denied");
-                alert("Please enable camera access! 📷");
+                console.log('Camera error:', err.message);
+                let errorMsg = '📷 Camera Access Denied!';
+                
+                if (err.name === 'NotAllowedError') {
+                    errorMsg = '❌ Please allow camera access in browser settings';
+                } else if (err.name === 'NotFoundError') {
+                    errorMsg = '❌ No camera found on this device';
+                } else if (err.name === 'NotReadableError') {
+                    errorMsg = '❌ Camera is already in use';
+                }
+                
+                alert(errorMsg);
+                if (cameraStatus) {
+                    cameraStatus.textContent = errorMsg;
+                    cameraStatus.style.display = 'block';
+                }
             });
+    } else {
+        alert('Your browser does not support camera access');
+        if (cameraStatus) {
+            cameraStatus.textContent = '❌ Browser does not support camera';
+            cameraStatus.style.display = 'block';
+        }
     }
 }
 
 function openPhotoBooth() {
-    document.getElementById('photoBooth').classList.remove('hidden');
-    startCamera();
+    console.log('Opening photo booth');
+    const photoBooth = document.getElementById('photoBooth');
+    if (photoBooth) {
+        photoBooth.classList.remove('hidden');
+        isCameraReady = false;
+        startCamera();
+    }
 }
 
 function closPhotoBooth() {
-    document.getElementById('photoBooth').classList.add('hidden');
-    if (cameraStream) {
-        cameraStream.getTracks().forEach(track => track.stop());
+    console.log('Closing photo booth');
+    const photoBooth = document.getElementById('photoBooth');
+    if (photoBooth) {
+        photoBooth.classList.add('hidden');
     }
+    
+    // Stop camera stream
+    if (cameraStream) {
+        cameraStream.getTracks().forEach(track => {
+            track.stop();
+            console.log('Camera track stopped');
+        });
+        cameraStream = null;
+    }
+    isCameraReady = false;
 }
 
 function capturePhoto() {
     const video = document.getElementById('cameraVideo');
     const canvas = document.getElementById('photoCanvas');
-    const ctx = canvas.getContext('2d');
+    
+    if (!video || !canvas) {
+        alert('Camera not ready!');
+        return;
+    }
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    if (!isCameraReady || video.readyState !== video.HAVE_ENOUGH_DATA) {
+        alert('📷 Camera is still loading... Please wait a moment and try again');
+        return;
+    }
 
-    ctx.drawImage(video, 0, 0);
-    addCuteStickers(ctx, canvas);
+    try {
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size to match video
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
 
-    ctx.font = 'bold 24px Arial';
-    ctx.fillStyle = '#ff1493';
-    ctx.textAlign = 'center';
-    ctx.fillText('The Cutest Baby in the World! 💕', canvas.width / 2, 40);
+        // Draw video frame
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    video.style.display = 'none';
-    canvas.style.display = 'block';
+        // Add cute text and stickers
+        ctx.font = 'bold 24px Arial';
+        ctx.fillStyle = '#ff1493';
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        ctx.fillText('The Cutest Baby in the World! 💕', canvas.width / 2, 40);
+
+        // Add stickers
+        addCuteStickers(ctx, canvas);
+
+        // Hide video, show canvas
+        video.style.display = 'none';
+        canvas.style.display = 'block';
+        
+        console.log('Photo captured successfully');
+    } catch (err) {
+        console.error('Capture error:', err);
+        alert('Error capturing photo: ' + err.message);
+    }
 }
 
 function addCuteStickers(ctx, canvas) {
-    const stickers = ['❤️', '💕', '✨', '🌹', '💖'];
-    const positions = [
-        { x: 50, y: 50 },
-        { x: canvas.width - 50, y: 50 },
-        { x: 50, y: canvas.height - 50 },
-        { x: canvas.width - 50, y: canvas.height - 50 },
-        { x: canvas.width / 2, y: canvas.height / 2 }
-    ];
+    try {
+        const stickers = ['❤️', '💕', '✨', '🌹', '💖'];
+        const positions = [
+            { x: 50, y: 50 },
+            { x: canvas.width - 50, y: 50 },
+            { x: 50, y: canvas.height - 50 },
+            { x: canvas.width - 50, y: canvas.height - 50 },
+            { x: canvas.width / 2, y: canvas.height / 2 }
+        ];
 
-    ctx.font = '40px Arial';
-    positions.forEach((pos, i) => {
-        ctx.fillText(stickers[i % stickers.length], pos.x, pos.y);
-    });
+        ctx.font = '40px Arial';
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+        ctx.shadowBlur = 3;
+        
+        positions.forEach((pos, i) => {
+            ctx.fillText(stickers[i % stickers.length], pos.x, pos.y);
+        });
+    } catch (err) {
+        console.error('Sticker error:', err);
+    }
 }
 
 function downloadPhoto() {
     const canvas = document.getElementById('photoCanvas');
-    const link = document.createElement('a');
-    link.href = canvas.toDataURL('image/png');
-    link.download = 'valentine-photo-for-chaavu.png';
-    link.click();
+    const video = document.getElementById('cameraVideo');
+    
+    if (canvas.style.display === 'none' || video.style.display !== 'none') {
+        alert('📸 Capture a photo first!');
+        return;
+    }
+
+    try {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = `valentine-photo-${new Date().getTime()}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        console.log('Photo downloaded');
+    } catch (err) {
+        console.error('Download error:', err);
+        alert('Error downloading photo: ' + err.message);
+    }
 }
 
 // ===== GAMES =====
